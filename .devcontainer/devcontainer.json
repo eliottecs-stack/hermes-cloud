@@ -1,16 +1,8 @@
 {
   "name": "Hermes Agent Cloud",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {
-    "ghcr.io/devcontainers/features/node-js:1": {}
-  },
-  "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash && echo 'source ~/.bashrc' >> ~/.bashrc",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-vscode.azure-account"
-      ]
-    }
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
+  "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/root/.local/bin:/home/vscode/.local/bin"
   }
 }
